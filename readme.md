@@ -15,13 +15,14 @@ This is a full-stack web application built using **Spring Boot** for the backend
 ### Backend
 - **Spring Boot**: For the backend API development.
 - **Spring Data JPA**: For database interactions.
-- **Thymeleaf**: For generating dynamic content (if needed for admin views).
-- **PDF Generation**: Libraries like Apache PDFBox or iText for generating PDF feedback.
+
 
 ### Frontend
 - **React**: For building the user interface.
 - **Material-UI**: For UI components like forms, buttons, grids, etc.
-- **Axios**: For making HTTP requests from the React frontend to the Spring Boot backend.
+- **Axios**: For making HTTP requests from the React frontend to the Spring 
+Boot backend.
+- **PDF Generation**: Libraries like jspdf for generating PDF feedback.
 
 ### Database
 - **MySQL/PostgreSQL**: For storing faculty data and their achievements.
@@ -91,38 +92,6 @@ This is a full-stack web application built using **Spring Boot** for the backend
 
     The frontend will be available at `http://localhost:3000`.
 
-### API Endpoints
-
-#### 1. **Add Faculty Details**
-   - **URL**: `/api/faculties`
-   - **Method**: `POST`
-   - **Body**:
-     ```json
-     {
-       "name": "John Doe",
-       "email": "john.doe@example.com",
-       "department": "Computer Science",
-       "contactNumber": "1234567890",
-       "designation": "Professor",
-       "joiningDate": "2022-01-01"
-     }
-     ```
-
-#### 2. **Add Achievements**
-   - **URL**: `/api/faculties/{id}/achievements`
-   - **Method**: `POST`
-   - **Body**:
-     ```json
-     {
-       "achievement": "Published 3 research papers in international journals"
-     }
-     ```
-
-#### 3. **Get IQAC Score**
-   - **URL**: `/api/faculties/{id}/iqac`
-   - **Method**: `GET`
-   - **Response**: Returns a PDF document containing the IQAC score and feedback.
-
 ## Running in Production
 
 1. Build the React app for production:
@@ -150,11 +119,3 @@ This is a full-stack web application built using **Spring Boot** for the backend
 4. Commit your changes (`git commit -am 'Add feature'`).
 5. Push to the branch (`git push origin feature-name`).
 6. Create a new pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to modify and expand this README based on your specific implementation and project needs.

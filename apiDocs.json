@@ -1,0 +1,1211 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "OpenAPI definition",
+      "version": "v0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8080",
+        "description": "Generated server url"
+      }
+    ],
+    "paths": {
+      "/api/training-developments/{facultyId}": {
+        "get": {
+          "tags": [
+            "training-development-controller"
+          ],
+          "operationId": "getTrainingByFacultyId",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TrainingDevelopment"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "training-development-controller"
+          ],
+          "operationId": "updateTraining",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrainingDevelopment"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TrainingDevelopment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/teacher-performance/{facultyId}": {
+        "get": {
+          "tags": [
+            "teacher-performance-controller"
+          ],
+          "operationId": "getPerformanceByFacultyId",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TeacherPerformance"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "teacher-performance-controller"
+          ],
+          "operationId": "updatePerformance",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeacherPerformance"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TeacherPerformance"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/research-contributions/{facultyId}": {
+        "get": {
+          "tags": [
+            "research-contribution-controller"
+          ],
+          "operationId": "getContributionByFacultyId",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResearchContribution"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "research-contribution-controller"
+          ],
+          "operationId": "updateContribution",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchContribution"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResearchContribution"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/phd-papers/{facultyId}": {
+        "get": {
+          "tags": [
+            "ph-d-papers-controller"
+          ],
+          "operationId": "getPaperByFacultyId",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PhDPapers"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "ph-d-papers-controller"
+          ],
+          "operationId": "updatePaper",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhDPapers"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PhDPapers"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/community-services/{facultyId}": {
+        "get": {
+          "tags": [
+            "community-service-controller"
+          ],
+          "operationId": "getServiceByFacultyId",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CommunityService"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "community-service-controller"
+          ],
+          "operationId": "updateServiceByFacultyId",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityService"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CommunityService"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/administrative-contributions/{facultyId}": {
+        "get": {
+          "tags": [
+            "administrative-contribution-controller"
+          ],
+          "operationId": "getContributionByFacultyId_1",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdministrativeContribution"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "administrative-contribution-controller"
+          ],
+          "operationId": "updateContributionByFacultyId",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdministrativeContribution"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdministrativeContribution"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/training-developments": {
+        "get": {
+          "tags": [
+            "training-development-controller"
+          ],
+          "operationId": "getAllTrainings",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TrainingDevelopment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "training-development-controller"
+          ],
+          "operationId": "CreateTraining",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrainingDevelopment"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TrainingDevelopment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/teacher-performance": {
+        "get": {
+          "tags": [
+            "teacher-performance-controller"
+          ],
+          "operationId": "getAllPerformances",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TeacherPerformance"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "teacher-performance-controller"
+          ],
+          "operationId": "createPerformance",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeacherPerformance"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TeacherPerformance"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/research-contributions": {
+        "get": {
+          "tags": [
+            "research-contribution-controller"
+          ],
+          "operationId": "getAllContributions",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ResearchContribution"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "research-contribution-controller"
+          ],
+          "operationId": "createContribution",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchContribution"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResearchContribution"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/phd-papers": {
+        "get": {
+          "tags": [
+            "ph-d-papers-controller"
+          ],
+          "operationId": "getAllPapers",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PhDPapers"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "ph-d-papers-controller"
+          ],
+          "operationId": "createPaper",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhDPapers"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PhDPapers"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/faculties": {
+        "get": {
+          "tags": [
+            "faculty-details-controller"
+          ],
+          "operationId": "getAllFaculties",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FacultyDetails"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "faculty-details-controller"
+          ],
+          "operationId": "createFaculty",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacultyDetails"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/FacultyDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/community-services": {
+        "get": {
+          "tags": [
+            "community-service-controller"
+          ],
+          "operationId": "getAllServices",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CommunityService"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "community-service-controller"
+          ],
+          "operationId": "createService",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityService"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CommunityService"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/administrative-contributions": {
+        "get": {
+          "tags": [
+            "administrative-contribution-controller"
+          ],
+          "operationId": "getAllContributions_1",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AdministrativeContribution"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "administrative-contribution-controller"
+          ],
+          "operationId": "createContribution_1",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdministrativeContribution"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdministrativeContribution"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/iqac/calculatescore/{facultyId}": {
+        "get": {
+          "tags": [
+            "iqac-controller"
+          ],
+          "operationId": "calculateIQACScore",
+          "parameters": [
+            {
+              "name": "facultyId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/IQACEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/faculties/{id}": {
+        "get": {
+          "tags": [
+            "faculty-details-controller"
+          ],
+          "operationId": "getFacultyById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/FacultyDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "faculty-details-controller"
+          ],
+          "operationId": "deleteFaculty",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/training-developments/{id}": {
+        "delete": {
+          "tags": [
+            "training-development-controller"
+          ],
+          "operationId": "deleteTraining",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/teacher-performance/{id}": {
+        "delete": {
+          "tags": [
+            "teacher-performance-controller"
+          ],
+          "operationId": "deletePerformance",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/research-contributions/{id}": {
+        "delete": {
+          "tags": [
+            "research-contribution-controller"
+          ],
+          "operationId": "deleteContribution",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/phd-papers/{id}": {
+        "delete": {
+          "tags": [
+            "ph-d-papers-controller"
+          ],
+          "operationId": "deletePaper",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/community-services/{id}": {
+        "delete": {
+          "tags": [
+            "community-service-controller"
+          ],
+          "operationId": "deleteService",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/administrative-contributions/{id}": {
+        "delete": {
+          "tags": [
+            "administrative-contribution-controller"
+          ],
+          "operationId": "deleteContribution_1",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "FacultyDetails": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "department": {
+              "type": "string"
+            },
+            "contactNumber": {
+              "type": "string"
+            },
+            "joiningDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "designation": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            }
+          }
+        },
+        "TrainingDevelopment": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "faculty": {
+              "$ref": "#/components/schemas/FacultyDetails"
+            },
+            "trainingsAttended": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "certificationsObtained": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "workshopsConducted": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "onlineCoursesCompleted": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "TeacherPerformance": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "faculty": {
+              "$ref": "#/components/schemas/FacultyDetails"
+            },
+            "performanceScore": {
+              "type": "number",
+              "format": "double"
+            },
+            "teachingExperienceYears": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "feedbackScore": {
+              "type": "number",
+              "format": "double"
+            },
+            "coursesTaught": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "ResearchContribution": {
+          "type": "object",
+          "properties": {
+            "faculty": {
+              "$ref": "#/components/schemas/FacultyDetails"
+            },
+            "papersPublished": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "projectsCompleted": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "conferencesAttended": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "PhDPapers": {
+          "type": "object",
+          "properties": {
+            "faculty": {
+              "$ref": "#/components/schemas/FacultyDetails"
+            },
+            "papersSupervised": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "thesesGuided": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "CommunityService": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "faculty": {
+              "$ref": "#/components/schemas/FacultyDetails"
+            },
+            "serviceHours": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "projectsParticipated": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "eventsOrganized": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "foreignParticipation": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "AdministrativeContribution": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "faculty": {
+              "$ref": "#/components/schemas/FacultyDetails"
+            },
+            "committeesLed": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "eventsOrganized": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "leadershipRoles": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "IQACEntity": {
+          "type": "object",
+          "properties": {
+            "faculty": {
+              "$ref": "#/components/schemas/FacultyDetails"
+            },
+            "iqacScore": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        }
+      }
+    }
+  }
