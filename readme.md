@@ -24,6 +24,7 @@ This is a full-stack web application built using **Spring Boot** for the backend
 Boot backend.
 - **PDF Generation**: Libraries like jspdf for generating PDF feedback.
 
+![alt text](image.png)
 ### Database
 - **MySQL/PostgreSQL**: For storing faculty data and their achievements.
 
