@@ -13,8 +13,11 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogTitle,
+    DialogTitle
 } from '@mui/material';
+
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const Faculty = () => {
     const [facultyList, setFacultyList] = useState([]);
@@ -29,8 +32,10 @@ const Faculty = () => {
         designation: '',
         joiningDate: '',
     });
-    const [openDeleteModal, setOpenDeleteModal] = useState(false); 
-    const [facultyIdToDelete, setFacultyIdToDelete] = useState(null); 
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [facultyIdToDelete, setFacultyIdToDelete] = useState(null);
+    const [openSnackbar, setOpenSnackbar] = React.useState(false);
+    const [openDeleteSnackbar, setOpenDeleteSnackbar] = React.useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,22 +52,23 @@ const Faculty = () => {
     };
 
     const handleDeleteClick = (id) => {
-        setFacultyIdToDelete(id); 
-        setOpenDeleteModal(true); 
+        setFacultyIdToDelete(id);
+        setOpenDeleteModal(true);
     };
 
     const handleDelete = async () => {
         try {
             await axiosInstance.delete(`/api/faculties/${facultyIdToDelete}`);
-            setOpenDeleteModal(false); 
-            fetchFaculty(); 
+            setOpenDeleteModal(false);
+            fetchFaculty();
+            setOpenDeleteSnackbar(true);
         } catch (error) {
             console.error(error);
         }
     };
 
     const handleCloseDeleteModal = () => {
-        setOpenDeleteModal(false); 
+        setOpenDeleteModal(false);
     };
 
     const handleViewDetails = (id) => {
@@ -85,8 +91,8 @@ const Faculty = () => {
         e.preventDefault();
         try {
             await axiosInstance.post('/api/faculties', newFaculty);
-            setIsAddingFaculty(false); 
-            fetchFaculty(); 
+            setIsAddingFaculty(false);
+            fetchFaculty();
             setNewFaculty({
                 name: '',
                 email: '',
@@ -96,6 +102,8 @@ const Faculty = () => {
                 designation: '',
                 joiningDate: '',
             });
+
+            setOpenSnackbar(true); // Show success snackbar
         } catch (error) {
             console.error(error);
         }
@@ -224,88 +232,112 @@ const Faculty = () => {
                     </>
                 ) : (
                     <form onSubmit={handleAddFaculty}>
-                    <Box mb={3}>
-                        <TextField
-                            label="Name"
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            name="name"
-                            value={newFaculty.name}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <TextField
-                            label="Email"
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            name="email"
-                            value={newFaculty.email}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <TextField
-                            label="Department"
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            name="department"
-                            value={newFaculty.department}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <TextField
-                            label="Address"
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            name="address"
-                            value={newFaculty.address}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <TextField
-                            label="Contact Number"
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            name="contactNumber"
-                            value={newFaculty.contactNumber}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <TextField
-                            label="Designation"
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            name="designation"
-                            value={newFaculty.designation}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <TextField
-                            label="Joining Date"
-                            type="date"
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            name="joiningDate"
-                            value={newFaculty.joiningDate}
-                            onChange={handleInputChange}
-                            required
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                    </Box>
-                    <Button type="submit" variant="contained" color="success" sx={{ fontFamily: 'Roboto, sans-serif' }}>
-                        Add Faculty
-                    </Button>
-                </form>
+                        <Box mb={3}>
+                            <TextField
+                                label="Name"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                name="name"
+                                value={newFaculty.name}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <TextField
+                                label="Email"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                name="email"
+                                value={newFaculty.email}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <TextField
+                                label="Department"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                name="department"
+                                value={newFaculty.department}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <TextField
+                                label="Address"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                name="address"
+                                value={newFaculty.address}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <TextField
+                                label="Contact Number"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                name="contactNumber"
+                                value={newFaculty.contactNumber}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <TextField
+                                label="Designation"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                name="designation"
+                                value={newFaculty.designation}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <TextField
+                                label="Joining Date"
+                                type="date"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                name="joiningDate"
+                                value={newFaculty.joiningDate}
+                                onChange={handleInputChange}
+                                required
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                        </Box>
+                        <Button type="submit" variant="contained" color="success" sx={{ fontFamily: 'Roboto, sans-serif' }}>
+                            Add Faculty
+                        </Button>
+                    </form>
                 )}
             </Box>
+
+            {/* create faculty notification */}
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={3000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+                <MuiAlert onClose={() => setOpenSnackbar(false)} severity="success" sx={{ width: '100%' }}>
+                    Faculty added successfully!
+                </MuiAlert>
+            </Snackbar>
+
+            {/* Delete faculty notification */}
+            <Snackbar
+                open={openDeleteSnackbar}
+                autoHideDuration={3000}
+                onClose={() => setOpenDeleteSnackbar(false)}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+                <MuiAlert onClose={() => setOpenDeleteSnackbar(false)} severity="success" sx={{ width: '100%' }}>
+                    Faculty deleted successfully!
+                </MuiAlert>
+            </Snackbar>
 
             {/* Delete Confirmation Modal */}
             <Dialog open={openDeleteModal} onClose={handleCloseDeleteModal}>

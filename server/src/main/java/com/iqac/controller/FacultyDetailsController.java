@@ -3,6 +3,7 @@ package com.iqac.controller;
 import com.iqac.model.FacultyDetails;
 import com.iqac.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +45,15 @@ public class FacultyDetailsController {
     @PostMapping
     public FacultyDetails createFaculty(@RequestBody FacultyDetails facultyDetails) {
         return facultyDetailsService.saveFaculty(facultyDetails);
+    }
+
+    @PostMapping("/bulk")
+    public ResponseEntity<String> createFacultyBulk(@RequestBody List<FacultyDetails> facultyDetailsList) {
+        for(FacultyDetails faculty : facultyDetailsList){
+            facultyDetailsService.saveFaculty(faculty);
+        }
+
+        return new ResponseEntity<>("Bulk faculty creation successful", HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
