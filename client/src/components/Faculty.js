@@ -18,6 +18,7 @@ import {
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Faculty = () => {
     const [facultyList, setFacultyList] = useState([]);
@@ -36,6 +37,7 @@ const Faculty = () => {
     const [facultyIdToDelete, setFacultyIdToDelete] = useState(null);
     const [openSnackbar, setOpenSnackbar] = React.useState(false);
     const [openDeleteSnackbar, setOpenDeleteSnackbar] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -43,11 +45,15 @@ const Faculty = () => {
     }, []);
 
     const fetchFaculty = async () => {
+        setLoading(true);
         try {
             const response = await axiosInstance.get('/api/faculties');
             setFacultyList(response.data);
         } catch (error) {
             console.error(error);
+        }
+        finally {
+            setLoading(false);
         }
     };
 
@@ -178,55 +184,61 @@ const Faculty = () => {
                             </Typography>
                         ) : (
                             <Grid container spacing={3}>
-                                {filteredFacultyList.map((faculty) => (
-                                    <Grid item xs={12} sm={6} md={4} key={faculty.id}>
-                                        <Card sx={{ boxShadow: 3 }}>
-                                            <CardContent>
-                                                <Typography variant="h6" sx={{ fontWeight: 'bold', fontFamily: 'Poppins, sans-serif' }}>
-                                                    {faculty.name}
-                                                </Typography>
-                                                <Typography color="textSecondary">
-                                                    <strong>Email:</strong> {faculty.email}
-                                                </Typography>
-                                                <Typography color="textSecondary">
-                                                    <strong>Department:</strong> {faculty.department}
-                                                </Typography>
-                                                <Typography color="textSecondary">
-                                                    <strong>Contact:</strong> {faculty.contactNumber}
-                                                </Typography>
-                                                <Typography color="textSecondary">
-                                                    <strong>Designation:</strong> {faculty.designation}
-                                                </Typography>
-                                                <Typography color="textSecondary">
-                                                    <strong>Joining Date:</strong> {faculty.joiningDate}
-                                                </Typography>
-                                                <Box mt={2} display="flex" gap={2}>
-                                                    <Button
-                                                        variant="contained"
-                                                        color="info"
-                                                        onClick={() => handleViewDetails(faculty.id)}
-                                                    >
-                                                        Details
-                                                    </Button>
-                                                    <Button
-                                                        variant="outlined"
-                                                        color="primary"
-                                                        onClick={() => handleIQACView(faculty.id)}
-                                                    >
-                                                        Get IQAC
-                                                    </Button>
-                                                    <Button
-                                                        variant="outlined"
-                                                        color="error"
-                                                        onClick={() => handleDeleteClick(faculty.id)}
-                                                    >
-                                                        Delete
-                                                    </Button>
-                                                </Box>
-                                            </CardContent>
-                                        </Card>
+                                {loading ? (
+                                    <Grid item xs={12} style={{ textAlign: 'center', marginTop: 40 }}>
+                                        <CircularProgress />
                                     </Grid>
-                                ))}
+                                ) : (
+                                    filteredFacultyList.map((faculty) => (
+                                        <Grid item xs={12} sm={6} md={4} key={faculty.id}>
+                                            <Card sx={{ boxShadow: 3 }}>
+                                                <CardContent>
+                                                    <Typography variant="h6" sx={{ fontWeight: 'bold', fontFamily: 'Poppins, sans-serif' }}>
+                                                        {faculty.name}
+                                                    </Typography>
+                                                    <Typography color="textSecondary">
+                                                        <strong>Email:</strong> {faculty.email}
+                                                    </Typography>
+                                                    <Typography color="textSecondary">
+                                                        <strong>Department:</strong> {faculty.department}
+                                                    </Typography>
+                                                    <Typography color="textSecondary">
+                                                        <strong>Contact:</strong> {faculty.contactNumber}
+                                                    </Typography>
+                                                    <Typography color="textSecondary">
+                                                        <strong>Designation:</strong> {faculty.designation}
+                                                    </Typography>
+                                                    <Typography color="textSecondary">
+                                                        <strong>Joining Date:</strong> {faculty.joiningDate}
+                                                    </Typography>
+                                                    <Box mt={2} display="flex" gap={2}>
+                                                        <Button
+                                                            variant="contained"
+                                                            color="info"
+                                                            onClick={() => handleViewDetails(faculty.id)}
+                                                        >
+                                                            Details
+                                                        </Button>
+                                                        <Button
+                                                            variant="outlined"
+                                                            color="primary"
+                                                            onClick={() => handleIQACView(faculty.id)}
+                                                        >
+                                                            Get IQAC
+                                                        </Button>
+                                                        <Button
+                                                            variant="outlined"
+                                                            color="error"
+                                                            onClick={() => handleDeleteClick(faculty.id)}
+                                                        >
+                                                            Delete
+                                                        </Button>
+                                                    </Box>
+                                                </CardContent>
+                                            </Card>
+                                        </Grid>
+                                    ))
+                                )}
                             </Grid>
                         )}
                     </>
